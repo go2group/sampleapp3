@@ -4,9 +4,9 @@ metadata:
   name: QuickStartGoApp
 spec:
   triggers:
-    - name: go2group/sampleapp3
+    - name: OWNERTOKEN/REPOTOKEN
       type: git
-      repo: go2group/sampleapp3
+      repo: OWNERTOKEN/REPOTOKEN
       events:
         - push.heads
       pullRequestAllowForkEvents: false
@@ -24,6 +24,6 @@ spec:
       revision: '${{CF_BRANCH}}'
   specTemplate:
     location: git
-    repo: 'go2group/sampleapp3'
+    repo: 'OWNERTOKEN/REPOTOKEN'
     path: ./codefresh-gomod.yml
     context: github
