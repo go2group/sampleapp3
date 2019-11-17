@@ -1,0 +1,29 @@
+version: '1.0'
+kind: pipeline
+metadata:
+  name: QuickStartGoApp
+spec:
+  triggers:
+    - name: go2group/sampleapp3
+      type: git
+      repo: go2group/sampleapp3
+      events:
+        - push.heads
+      pullRequestAllowForkEvents: false
+      commentRegex: /.*/gi
+      branchRegex: /.*/gi
+      branchRegexInput: regex
+      provider: github
+      context: github
+      verified: true
+  steps:
+    placeholder:
+      type: git-clone
+      description: This steps definition is ignored since the pipeline will load from file instead
+      repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+      revision: '${{CF_BRANCH}}'
+  specTemplate:
+    location: git
+    repo: 'go2group/sampleapp3'
+    path: ./codefresh-gomod.yml
+    context: github
